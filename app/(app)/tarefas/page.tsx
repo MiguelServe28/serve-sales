@@ -8,7 +8,7 @@ import { carregar } from "@/lib/vista";
 
 export default async function ParaFazer() {
   await sincronizarTarefas().catch(() => 0);
-  const [{ hoje, lista, nomeEq, defs }, tarefas] = await Promise.all([carregar(), listTarefas()]);
+  const [{ hoje, lista }, tarefas] = await Promise.all([carregar(), listTarefas()]);
   const abertas = tarefas.filter((t) => t.estado === "aberta");
   const feitas = tarefas.filter((t) => t.estado === "concluida").sort((a, b) => b.prazo.localeCompare(a.prazo)).slice(0, 15);
   const passoDe = (periodo: string) => periodo.split(":")[0] as Passo;
@@ -16,7 +16,7 @@ export default async function ParaFazer() {
   return (
     <>
       <PageHeader eyebrow="Cobranças" titulo="Para fazer"
-        descricao={`Lembretes e chamadas da escada, atribuídos a ${nomeEq(defs.responsavel_id)}. Ficam feitos ao registar o contacto na ficha do cliente; aparecem também no O meu dia e contam para os prazos no RH Interno.`}>
+        descricao="Lembretes e chamadas da escada, atribuídos ao responsável das cobranças (em Definições). Ficam feitos ao registar o contacto na ficha do cliente; aparecem também no O meu dia e contam para os prazos no RH Interno.">
         <form action={atualizarTarefas}><button className="btn-ghost"><RefreshCw size={14} />Atualizar</button></form>
       </PageHeader>
       {abertas.length ? (

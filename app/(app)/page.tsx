@@ -7,7 +7,7 @@ import { carregar } from "@/lib/vista";
 
 export default async function Painel() {
   await sincronizarTarefas().catch(() => 0);
-  const { hoje, faturas, contactos, lista, cargas, defs, nomeEq } = await carregar();
+  const { hoje, faturas, contactos, lista, cargas, defs } = await carregar();
   const abertas = faturas.filter(emAberto);
   const total = abertas.reduce((s, f) => s + f.em_aberto, 0);
   const porEscalao = ESCALOES.map((e) => {
@@ -22,7 +22,7 @@ export default async function Painel() {
   return (
     <>
       <PageHeader eyebrow="SERVE Sales" titulo="Cobranças"
-        descricao={`Faturas por receber, a partir do mapa de pendentes do TOConline. Escada: 1.º lembrete aos ${defs.dias[0]} dias, 2.º aviso aos ${defs.dias[1]} e chamada aos ${defs.dias[2]}. Responsável: ${nomeEq(defs.responsavel_id)}.`}>
+        descricao={`Faturas por receber, a partir do mapa de pendentes do TOConline. Escada: 1.º lembrete aos ${defs.dias[0]} dias, 2.º aviso aos ${defs.dias[1]} e chamada aos ${defs.dias[2]}.`}>
         <Link href="/importar" className="btn-primary"><FileUp size={16} />Carregar pendentes</Link>
       </PageHeader>
 
