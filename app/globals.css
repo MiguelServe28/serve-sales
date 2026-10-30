@@ -1,0 +1,38 @@
+@font-face { font-family: "Poppins"; src: url("/fonts/Poppins-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("/fonts/Poppins-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("/fonts/Poppins-Bold.ttf") format("truetype"); font-weight: 600 700; font-display: swap; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-fundo text-corpo; }
+  h1, h2, h3 { @apply text-tinta; }
+}
+
+@layer components {
+  .card { @apply rounded-xl border border-filete bg-white shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-laranja text-white hover:bg-[#E05D06]; }
+  .btn-dark { @apply btn bg-navy text-white hover:bg-navy-2; }
+  .btn-ghost { @apply btn border border-filete bg-white text-tinta hover:bg-banda; }
+  .input { @apply w-full rounded-lg border border-filete bg-white px-3 py-2 text-sm text-tinta placeholder:text-cinza/70 focus:border-laranja focus:outline-none focus:ring-2 focus:ring-laranja/20; }
+  .label { @apply mb-1 block text-xs font-medium uppercase tracking-wide text-cinza; }
+  .th { @apply whitespace-nowrap px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-cinza; }
+  .td { @apply px-3 py-2.5 text-sm; }
+  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-laranja; }
+}
+
+/* Menu lateral recolhido */
+.menu-icone { display: none; }
+[data-menu-raiz] aside, [data-menu-raiz] main { transition: width .15s ease, padding-left .15s ease; }
+[data-menu=recolhido] aside { width: 4rem; }
+[data-menu=recolhido] main { padding-left: 4rem; }
+[data-menu=recolhido] .menu-texto { display: none; }
+[data-menu=recolhido] .menu-icone { display: inline; }
+[data-menu=recolhido] aside nav { padding-left: .5rem; padding-right: .5rem; }
+[data-menu=recolhido] aside nav a { justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }
+[data-menu=recolhido] aside > a:first-of-type { padding-left: 0; padding-right: 0; text-align: center; }
+[data-menu=recolhido] aside > a:first-of-type > div { justify-content: center; }
