@@ -8,7 +8,7 @@ export default async function Importar() {
   return (
     <>
       <PageHeader eyebrow="Dados" titulo="Carregar pendentes"
-        descricao="Exporte do TOConline o mapa de pendentes de clientes e carregue-o aqui, de preferência uma vez por semana. Cada carga substitui a anterior: os documentos que deixam de aparecer ficam como pagos nesse dia." />
+        descricao="Carregue o mapa de pendentes do TOConline uma vez por semana. As faturas que deixam de aparecer ficam pagas nesse dia." />
       <div className="grid gap-6 xl:grid-cols-[1fr_1.2fr]">
         <div>
           <ImportarForm />

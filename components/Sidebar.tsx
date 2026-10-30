@@ -46,7 +46,7 @@ export default function Sidebar({ recolhido = false, email, demo, plataforma }: 
         </div>
         <p className="menu-texto mt-2 text-xs text-white/60">Sales · cobranças</p>
       </div>
-      <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-4">
+      <nav className="menu-scroll flex-1 space-y-5 overflow-y-auto px-3 pb-4">
         {GRUPOS.map((g) => (
           <div key={g.titulo}>
             <p className="menu-texto px-3 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">{g.titulo}</p>

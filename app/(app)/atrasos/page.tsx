@@ -9,7 +9,7 @@ export default async function PagamTarde() {
   return (
     <>
       <PageHeader eyebrow="Cobranças" titulo="Clientes que pagam tarde"
-        descricao="Pelo histórico: pagam em média mais de 30 dias depois do vencimento, já pagaram tarde duas vezes ou mais, ou têm faturas em aberto há mais de 60 dias. Serve para rever condições (pagamento por débito direto, antecipado ou avença ajustada)." />
+        descricao="Clientes que costumam pagar mais de 30 dias depois do vencimento. Bons candidatos a débito direto." />
       {l.length ? (
         <div className="card overflow-x-auto">
           <table className="w-full text-sm">

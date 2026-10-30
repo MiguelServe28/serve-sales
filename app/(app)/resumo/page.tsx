@@ -38,7 +38,7 @@ export default async function Resumo({ searchParams }: { searchParams: Promise<{
   return (
     <>
       <PageHeader eyebrow="Análise" titulo={`Resumo de ${nomeMes(mes)}`}
-        descricao={`Dívida de clientes ${emCurso ? `até hoje (${dPt(hoje)})` : `no fim do mês (${dPt(r.fim)})`}, o que entrou e o trabalho de cobrança feito.${a ? " Comparado com o mês anterior." : ""}`}>
+        descricao={`Dívida, recebimentos e cobranças ${emCurso ? `até hoje` : `no fim do mês`}.${a ? " Comparado com o mês anterior." : ""}`}>
         <MonthNav mes={mes} base="/resumo" inicio={meses[0]} />
         <Imprimir />
       </PageHeader>

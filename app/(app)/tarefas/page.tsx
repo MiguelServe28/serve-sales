@@ -16,7 +16,7 @@ export default async function ParaFazer() {
   return (
     <>
       <PageHeader eyebrow="Cobranças" titulo="Para fazer"
-        descricao="Lembretes e chamadas da escada, atribuídos ao responsável das cobranças (em Definições). Ficam feitos ao registar o contacto na ficha do cliente; aparecem também no O meu dia e contam para os prazos no RH Interno.">
+        descricao="Lembretes e chamadas da escada de cobrança. Ficam feitos ao registar o contacto na ficha do cliente.">
         <form action={atualizarTarefas}><button className="btn-ghost"><RefreshCw size={14} />Atualizar</button></form>
       </PageHeader>
       {abertas.length ? (

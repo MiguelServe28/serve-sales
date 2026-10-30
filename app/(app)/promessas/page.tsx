@@ -13,7 +13,7 @@ export default async function Promessas() {
   const nome = (nif: string) => clientes.find((c) => c.nif === nif)?.nome ?? nif;
   return (
     <>
-      <PageHeader eyebrow="Cobranças" titulo="Promessas de pagamento" descricao="A promessa mais recente de cada cliente. Falhada = a data passou e ainda há faturas em aberto; cumprida = já não deve nada." />
+      <PageHeader eyebrow="Cobranças" titulo="Promessas de pagamento" descricao="A promessa mais recente de cada cliente e se foi cumprida." />
       {ps.length ? (
         <div className="card overflow-x-auto">
           <table className="w-full text-sm">

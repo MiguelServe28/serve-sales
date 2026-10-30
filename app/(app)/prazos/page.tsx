@@ -24,7 +24,7 @@ export default async function Prazos() {
   return (
     <>
       <PageHeader eyebrow="Análise" titulo="Prazo de recebimento"
-        descricao="Quantos dias os clientes demoram a pagar, mês a mês, pelas faturas pagas em cada mês. O objetivo é que a barra vá descendo." />
+        descricao="Quantos dias os clientes demoram a pagar, mês a mês. O objetivo é que a barra desça." />
 
       <section className="card mb-6 p-6">
         <h2 className="mb-1 text-sm font-semibold uppercase tracking-wide text-cinza">Dias depois do vencimento, em média</h2>

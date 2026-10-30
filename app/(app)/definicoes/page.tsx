@@ -7,7 +7,7 @@ export default async function Definicoes() {
   const [d, equipa, s] = await Promise.all([getDefinicoes(), listEquipa(), getSessao()]);
   return (
     <>
-      <PageHeader eyebrow="Dados" titulo="Definições" descricao="A escada de cobrança e quem trata dela. As tarefas novas vão para o responsável escolhido." />
+      <PageHeader eyebrow="Dados" titulo="Definições" descricao="A escada de cobrança e o responsável." />
       <form action={guardarDefinicoes} className="card max-w-2xl space-y-5 p-6">
         <div>
           <p className="label">Escada de cobrança (dias depois do vencimento)</p>

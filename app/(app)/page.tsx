@@ -22,7 +22,7 @@ export default async function Painel() {
   return (
     <>
       <PageHeader eyebrow="SERVE Sales" titulo="Cobranças"
-        descricao={`Faturas por receber, a partir do mapa de pendentes do TOConline. Escada: 1.º lembrete aos ${defs.dias[0]} dias, 2.º aviso aos ${defs.dias[1]} e chamada aos ${defs.dias[2]}.`}>
+        descricao={`Faturas por receber, a partir dos pendentes do TOConline. Avisos aos ${defs.dias[0]} e ${defs.dias[1]} dias, chamada aos ${defs.dias[2]}.`}>
         <Link href="/importar" className="btn-primary"><FileUp size={16} />Carregar pendentes</Link>
       </PageHeader>
 

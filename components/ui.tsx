@@ -2,6 +2,11 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MES_INICIO, nomeMes, somaMes } from "@/lib/dates";
 
+/** Cada frase da descrição num parágrafo. */
+function frases(t: string) {
+  return t.split(/(?<=[.!?])\s+(?=[A-ZÀ-ÚÇ0-9«])/).map((s) => s.trim()).filter(Boolean);
+}
+
 export function PageHeader({
   eyebrow, titulo, descricao, children,
 }: { eyebrow?: string; titulo: string; descricao?: string; children?: React.ReactNode }) {
@@ -10,7 +15,7 @@ export function PageHeader({
       <div>
         {eyebrow && <p className="eyebrow mb-1.5">{eyebrow}</p>}
         <h1 className="text-[26px] font-semibold leading-tight">{titulo}</h1>
-        {descricao && <p className="mt-1.5 max-w-2xl text-sm text-cinza">{descricao}</p>}
+        {descricao && <div className="mt-1.5 max-w-2xl space-y-0.5 text-sm text-cinza">{frases(descricao).map((f, i) => <p key={i}>{f}</p>)}</div>}
         <div className="mt-3 h-0.5 w-10 rounded bg-laranja" />
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
