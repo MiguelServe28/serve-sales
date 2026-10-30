@@ -26,7 +26,7 @@ function demo(): Demo {
   const h = hojeISO();
   const f = (i: number, nif: string, nome: string, diasAtras: number, valor: number, pago?: number): Fatura => ({
     id: `f${i}`, numero: `FT 2026/${100 + i}`, nif, nome, data: somaDias(h, -diasAtras), vencimento: somaDias(h, -diasAtras),
-    valor, em_aberto: pago !== undefined ? 0 : valor, primeira_vez: somaDias(h, -diasAtras), ultima_vez: h, pago_em: pago !== undefined ? somaDias(h, -diasAtras + pago) : null,
+    valor, em_aberto: valor, primeira_vez: somaDias(h, -diasAtras), ultima_vez: h, pago_em: pago !== undefined ? somaDias(h, -diasAtras + pago) : null,
   });
   g.__salesDemo = {
     faturas: [
@@ -35,6 +35,8 @@ function demo(): Demo {
       f(5, "200000003", "Casa da Praia AL (demo)", 12, 61.5), f(6, "510000004", "Caldas Comércio, Lda. (demo)", 95, 430.5),
       f(7, "510000002", "Oeste Restauração, Lda. (demo)", 120, 246, 70), f(8, "510000002", "Oeste Restauração, Lda. (demo)", 90, 246, 55),
       f(9, "510000003", "Óbidos Imobiliária, Lda. (demo)", 140, 615, 10),
+      f(10, "510000001", "Atlântico Construções, Lda. (demo)", 105, 369, 40), f(11, "200000003", "Casa da Praia AL (demo)", 70, 61.5, 5),
+      f(12, "510000004", "Caldas Comércio, Lda. (demo)", 160, 430.5, 85), f(13, "510000001", "Atlântico Construções, Lda. (demo)", 135, 369, 50),
     ],
     contactos: [
       { id: "c1", nif: "510000004", data: somaDias(h, -20), tipo: "chamada", nota: "Disse que pagava até ao fim do mês.", promessa_data: somaDias(h, -3), promessa_valor: 430.5, por: null },
@@ -134,7 +136,7 @@ export async function importarPendentes(linhas: LinhaPendente[], ficheiro: strin
     for (let i = 0; i < lote.length; i += 500) ok(await a.from("sales_faturas").upsert(lote.slice(i, i + 500), { onConflict: "numero" }));
     const sairam = atuais.filter((f) => !f.pago_em && !vistas.has(f.numero)).map((f) => f.numero);
     pagas = sairam.length;
-    for (let i = 0; i < sairam.length; i += 300) ok(await a.from("sales_faturas").update({ pago_em: hoje, em_aberto: 0, atualizado_em: new Date().toISOString() }).in("numero", sairam.slice(i, i + 300)));
+    for (let i = 0; i < sairam.length; i += 300) ok(await a.from("sales_faturas").update({ pago_em: hoje, atualizado_em: new Date().toISOString() }).in("numero", sairam.slice(i, i + 300)));
     ok(await a.from("sales_cargas").insert({ ficheiro, n_faturas: linhas.length, total: linhas.reduce((s, l) => s + l.em_aberto, 0), pagas, por }));
   }
   await sincronizarTarefas();

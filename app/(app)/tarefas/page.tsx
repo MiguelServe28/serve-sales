@@ -31,7 +31,9 @@ export default async function ParaFazer() {
                   <td className="td font-medium">{d?.nome ?? t.nif}</td>
                   <td className="td text-right tabular-nums">{d ? euro(d.total) : "—"}</td>
                   <td className="td text-center">{d?.dias ?? "—"}</td>
-                  <td className="td text-right"><Link href={`/clientes/${t.nif}`} className="btn-ghost">Registar</Link></td>
+                  <td className="td text-right">{p === "chamada" || p === "promessa"
+                    ? <Link href={`/clientes/${t.nif}/chamada`} className="btn-primary">Ligar</Link>
+                    : <Link href={`/clientes/${t.nif}`} className="btn-ghost">Registar</Link>}</td>
                 </tr>); })}
             </tbody>
           </table>

@@ -3,7 +3,7 @@
 import BotaoMenu from "@/components/BotaoMenu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarClock, ExternalLink, FileUp, KeyRound, LayoutDashboard, ListChecks, LogOut, Settings, Turtle, Users } from "lucide-react";
+import { BarChart3, CalendarClock, Timer, ExternalLink, FileUp, KeyRound, LayoutDashboard, ListChecks, LogOut, Settings, Turtle, Users } from "lucide-react";
 import { sair } from "@/app/actions";
 
 const GRUPOS = [
@@ -15,6 +15,13 @@ const GRUPOS = [
       { href: "/tarefas", label: "Para fazer", icon: ListChecks },
       { href: "/promessas", label: "Promessas", icon: CalendarClock },
       { href: "/atrasos", label: "Pagam tarde", icon: Turtle },
+    ],
+  },
+  {
+    titulo: "Análise",
+    itens: [
+      { href: "/resumo", label: "Resumo mensal", icon: BarChart3 },
+      { href: "/prazos", label: "Prazo de recebimento", icon: Timer },
     ],
   },
   {
@@ -30,7 +37,7 @@ export default function Sidebar({ recolhido = false, email, demo, plataforma }: 
   const path = usePathname();
   const ativo = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
   return (
-    <aside className="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-navy text-white">
+    <aside className="print:hidden fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-navy text-white">
       <BotaoMenu inicial={recolhido} />
       <div className="px-6 pb-5 pt-7">
         <div className="flex items-baseline gap-1">

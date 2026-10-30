@@ -55,7 +55,7 @@ export default async function Painel() {
               {acoes.length ? (
                 <div className="card divide-y divide-filete">
                   {acoes.slice(0, 10).map((x) => (
-                    <Link key={x.nif} href={`/clientes/${encodeURIComponent(x.nif)}`} className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-fundo">
+                    <Link key={x.nif} href={`/clientes/${encodeURIComponent(x.nif)}${x.passo === "chamada" || x.passo === "promessa" ? "/chamada" : ""}`} className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-fundo">
                       <span className={`w-32 shrink-0 rounded px-1.5 py-0.5 text-center text-[11px] font-medium ${PASSOS[x.passo!].cor}`}>{PASSOS[x.passo!].curto}</span>
                       <span className="min-w-0 flex-1 truncate font-medium text-tinta">{x.nome}</span>
                       <span className="shrink-0 text-xs text-cinza">{x.dias} dias</span>

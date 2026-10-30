@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Phone } from "lucide-react";
 import ApagarContacto from "@/components/ApagarContacto";
 import ContactoForm from "@/components/ContactoForm";
 import { PageHeader, Stat, Vazio } from "@/components/ui";
@@ -24,6 +24,7 @@ export default async function FichaDivida({ params }: { params: Promise<{ nif: s
     <>
       <Link href="/clientes" className="mb-4 inline-flex items-center gap-1 text-sm text-cinza hover:text-tinta"><ArrowLeft size={14} />Dívidas por cliente</Link>
       <PageHeader eyebrow="Ficha de dívida" titulo={nome} descricao={[nif.startsWith("?") ? "Sem cliente identificado na Plataforma" : `NIF ${nif}`, c?.gestor_nome && `Gestor: ${c.gestor_nome}`, c?.email].filter(Boolean).join(" · ")}>
+        {d && !nif.startsWith("?") && <Link href={`/clientes/${encodeURIComponent(nif)}/chamada`} className={d.passo === "chamada" || d.passo === "promessa" ? "btn-primary" : "btn-ghost"}><Phone size={14} />Guião da chamada</Link>}
         {c && plataforma && <a href={`${plataforma}/clientes/${nif}`} className="btn-ghost"><ExternalLink size={14} />Ficha na Plataforma</a>}
       </PageHeader>
 
